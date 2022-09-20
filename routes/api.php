@@ -14,7 +14,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
+//Register and Login
 Route::group([
     'middleware' => 'api',
     'prefix' => 'auth'
@@ -34,7 +34,7 @@ Route::group([
 });
 
 
-
+//Category
 Route::group([
     'middleware' => 'jwt.verify',
     'prefix' => 'categories'
@@ -46,6 +46,7 @@ Route::group([
     Route::delete('/destroy/{id}', 'App\Http\Controllers\CategoryController@destroy'); //Delete a record (Tested)
 });
 
+//Movie
 Route::group([
     'middleware' => 'jwt.verify',
     'prefix' => 'movie'
@@ -53,6 +54,7 @@ Route::group([
     Route::get('/index', [MovieController::class, 'index']); //Shows all records (Tested)
 });
 
+//Streaming
 Route::group([
     'middleware' => 'jwt.verify',
     'prefix' => 'streaming'
@@ -60,6 +62,7 @@ Route::group([
     Route::get('/index', [Streaming_MoviesController::class, 'index']); //Shows all records (Tested)
 });
 
+//Favorite
 Route::group([
     'middleware' => 'jwt.verify',
     'prefix' => 'favorite'
